@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.weichuang.demo</groupId>
+    <artifactId>wc-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.weichuang.demo</groupId>
+  <artifactId>wc-demo-order-api</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>wc-demo-order-api</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+            <dependency>
+         	<groupId>com.weichuang.demo</groupId>
+   			<artifactId>wc-demo-common</artifactId>
+   			<version>0.0.1-SNAPSHOT</version>
+   		</dependency>
+
+          <!--mapper-->
+         <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>2.1.5</version>
+         </dependency>
+    
+        <!-- 客户端feign 内部使用了ribbon负载均衡 -->
+   		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		 <!-- 客户端feign 连接池，配置文件不用配置启用项，默认是自动开启 -->
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-httpclient</artifactId>
+		</dependency>
+		
+		<!-- 负载均衡 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+		</dependency>
+		<!-- 
+		注册服务，一定要引入，不然调用就会失败  Load balancer does not have available server 
+		只要引入了，项目就会自动去找服务，如果不做远程调用，就注释掉，如果客户端或者提供者加入了这个配置，访问返回数据格式就是xml
+		
+		 <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+        -->
+        <!-- eureka提供者，不要用spring-cloud-starter-netflix-eureka-server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        
+        
+        <!-- 断容 -->
+         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-javanica</artifactId>
+        </dependency>
+        
+        <!-- 这个依赖包含了sleuth和zipkin -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+        
+        <!-- 分布式事务txlcn -->
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-tc</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-txmsg-netty</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+        
+  </dependencies>
+</project>

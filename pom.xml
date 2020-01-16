@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.weichuang.demo</groupId>
+  <artifactId>wc-demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>	
+  <name>wc-demo</name>
+  <url/>
+  <description>深圳微创计算机系统有限公司demo项目</description>
+  
+
+  <modules>
+  	<module>wc-demo-springboot</module>
+    <module>wc-demo-cloud-provider</module>
+    <module>wc-demo-common</module>
+    <module>wc-demo-cloud-eureka</module>
+    <module>wc-demo-cloud-eureka-client</module>
+    <module>wc-demo-cloud-feign</module>
+    <module>wc-demo-user-api</module>
+    <module>wc-demo-user-provide</module>
+    <module>wc-demo-config</module>
+    <module>wc-demo-zuul</module>
+    <module>wc-demo-order</module>
+    <module>wc-demo-order-provide</module>
+    <module>wc-demo-order-api</module>
+  </modules>
+  
+   <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+	<!--	<version>1.5.9.RELEASE</version>-->
+	    <version>2.1.8.RELEASE</version>
+		<relativePath/>
+  </parent>
+  
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <!--SpringCloud最新稳定版本 Finchley.SR4 引用报错 Greenwich.SR3才自动引入包-->
+    <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+  </properties>
+  
+  
+  <dependencies>
+         
+         <dependency>
+   			<groupId>org.springframework.boot</groupId>
+   			<artifactId>spring-boot-starter-web</artifactId>
+   		</dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+	    
+	     <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+  </dependencies>
+  
+  <dependencyManagement> <!-- 管理依赖模块是不会直接导入jar包，在子模块需要的时候，在进行引用 -->
+    <!-- 导入这个后，引入eureka才不会报错 -->
+   	<dependencies>
+   		<dependency>
+   			<groupId>org.springframework.cloud</groupId>
+   			<artifactId>spring-cloud-dependencies</artifactId>
+   			<version>${spring-cloud.version}</version>
+   			<type>pom</type>
+   			<scope>import</scope>
+   		</dependency>
+   	</dependencies>
+   </dependencyManagement>
+
+</project>

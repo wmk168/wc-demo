@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>wc-demo</artifactId>
+        <groupId>com.weichuang.demo</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+  <groupId>com.weichuang.demo</groupId>
+  <artifactId>wc-demo-springboot</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>wc-demo-springboot</name>
+    
+  <dependencies>
+		<dependency>
+         	<groupId>com.weichuang.demo</groupId>
+   			<artifactId>wc-demo-user-api</artifactId>
+   			<version>0.0.1-SNAPSHOT</version>
+   		</dependency>
+   		
+   		<dependency>
+         	<groupId>com.weichuang.demo</groupId>
+   			<artifactId>wc-demo-order-api</artifactId>
+   			<version>0.0.1-SNAPSHOT</version>
+   		</dependency>
+				
+		<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+		</dependency>
+		
+		<!-- 启用配置 -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		
+		
+		 <!-- springcloud-bus依赖实现配置自动更新，rabbitmq -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!-- zuul路由器 -->
+		<dependency>
+ 				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+		</dependency>
+
+		
+  </dependencies>
+
+  <build>
+    <plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--<version>1.4.2.RELEASE</version> -->
+				<!-- 1.4.2.RELEASE 这个版本对应才能打包jar访问jsp页面，其他版本不行 -->
+			</plugin>
+		</plugins> 
+  </build>
+</project>
